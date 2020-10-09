@@ -2,6 +2,8 @@
 
 A convenient script for running Terraform operations against Azure Cloud.
 
+**Now on Docker Hub!** `docker pull carlosnunez/terraform-azure-wrapper`
+
 # Bugs? Feedback?
 
 I want all feedback! Please
@@ -43,6 +45,18 @@ $: ./scripts/create_env.sh
 This will produce a `.env` file at the root of your repository. Open it in your favorite editor
 and replace anything that says "change me".
 
+### Running in Docker?
+
+Run this instead:
+
+```sh
+$: docker run --rm -v "$PWD:/work" -w /work --entrypoint /app/scripts/create_env.sh $your_image_name
+```
+
+Replace `$your_image_name` with `carlosnunez/terraform-azure-wrapper` if your using the image
+on Docker Hub or the name of your locally-built Docker image (see
+["Want to use Docker?"](#want-to-use-docker) for more info.)
+
 ### A Quick Security Note
 
 If you're doing all of this in a Git repository, **this file will never get committed into your Git history.**
@@ -67,6 +81,17 @@ Once you have your `.env` file, run the wrapper script!
 ```sh
 $: ./scripts/terraform.sh [options]
 ```
+
+or this if running in Docker:
+
+
+```sh
+$: docker run --rm --env-file .env $your_image_name
+```
+
+Replace `$your_image_name` with `carlosnunez/terraform-azure-wrapper` if your using the image
+on Docker Hub or the name of your locally-built Docker image (see
+["Want to use Docker?"](#want-to-use-docker) for more info.)
 
 The wrapper will:
 
