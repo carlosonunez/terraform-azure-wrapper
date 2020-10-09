@@ -1,0 +1,33 @@
+version: "3.7"
+services:
+  encrypt-env:
+    image: vladgh/gpg
+    working_dir: /app
+    volumes:
+      - $PWD:/app
+    command:
+      - --batch
+      - --yes
+      - --passphrase=$ENV_PASSWORD
+      - --output=env.gpg
+      - --symmetric
+      - .env
+  decrypt-env:
+    image: vladgh/gpg
+    working_dir: /app
+    volumes:
+      - $PWD:/app
+    command:
+      - --decrypt
+      - --batch
+      - --yes
+      - --passphrase=$ENV_PASSWORD
+      - --output=.env
+      - env.gpg
+  terraform:
+    build:
+      context: .
+      dockerfile: terraform.Dockerfile
+    env_file: .env
+    entrypoint:
+      - scripts/terraform.sh

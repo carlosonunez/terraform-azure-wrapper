@@ -72,6 +72,24 @@ The wrapper will:
 
 ### Want to use Docker?
 
+This repo comes with a `Dockerfile` that can run this script. You can use raw Docker commands or
+Docker Compose to run this script in a container.
+
+#### Docker Compose
+
+```sh
+$: docker-compose run --rm terraform [options]
+```
+
+**Note**: The command above will _not_ save downloaded modules, local Terraform state, and other
+metadata. If you want that data, run this instead:
+
+```sh
+$: docker-compose run -v "$PWD/.terraform:/root/.terraform" --rm terraform [options]
+```
+
+#### Raw Docker commands
+
 1. Use the `Dockerfile` in this repository to build a Terraform Docker image:
    `docker build -t your_image_name -f terraform.Dockerfile .`
 2. Run your Terraform commands like normal:
