@@ -2,6 +2,12 @@
 
 A convenient script for running Terraform operations against Azure Cloud.
 
+# Bugs? Feedback?
+
+I want all feedback! Please
+[create a new GitHub Issue](https://github.com/carlosonunez/terraform-azure-wrapper/issues/new) or
+[email me!](mailto:dev@carlosnunez.me).
+
 # Why?
 
 Okay, so you're trying to deploy some Azure VMs or whatever and think "It's Terraform time!"
@@ -102,6 +108,3 @@ metadata. If you want that data, run this instead:
 $: docker run -v "$PWD/.terraform:/root/.terraform" --rm your_image_name [options]
 ```
 
-# Bugs? Feedback?
-
-Please create a new GitHub Issue!
