@@ -1,0 +1,6 @@
+.terraform/
+*.tfstate
+.terraform.*/
+.env
+.env.*
+!.env.example
