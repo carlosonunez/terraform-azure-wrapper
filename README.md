@@ -32,6 +32,8 @@ You can get started with this script in two easy steps:
 
 1. [Create your environment file](#create-your-environment-file),
 2. [Run the script!](#run-the-script)
+3. [Create your Terraform backend](#create-your-terraform-backend)
+4. Win at Terraform!
 
 
 ## Create your environment file
@@ -133,3 +135,18 @@ metadata. If you want that data, run this instead:
 $: docker run -v "$PWD/.terraform:/root/.terraform" --rm your_image_name [options]
 ```
 
+## Write your Terraform Backend
+
+Lastly, set up your Terraform backend as follows:
+
+```hcl
+terraform {
+  backend "azurerm" {}
+}
+```
+
+The script will handle using your environment file to configure your backend.
+
+**NOTE**: This script only supports Azure Blob Storage through a service principal id/key pair.
+You'll need to edit `scripts/terraform.sh` if you need to use certificate-based authentication,
+Azure storage account-based authentication, or a managed identity.
