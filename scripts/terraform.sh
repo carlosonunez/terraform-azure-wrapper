@@ -116,7 +116,7 @@ initialize_terraform() {
 }
 
 run_terraform_action() {
-  echo not_yet
+  terraform $*
 }
 
 run_preflight_checks_or_exit &&
