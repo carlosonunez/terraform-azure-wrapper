@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
+if [ "$1" == '--create-env' ]
+then
+  if test -f "$PWD/.env" && test "$2" != "--force"
+  then
+    >&2 echo "ERROR: You already have an environment file; add --force to overwrite it."
+    exit 1
+  fi
+  ./scripts/create_env.sh &&
+  cat <<-CREATE_ENV_INSTRUCTIONS
+A new environment file has been created at $PWD/.env. The contents of this file
+are shown below. Open it in an editor and change anything that says 'change me.'
+
+$(cat $PWD/.env)
+CREATE_ENV_INSTRUCTIONS
+  exit 0
+fi
+
 AZURE_TENANT_ID="${AZURE_TENANT_ID?Please provide the ID for your Azure tenant.}"
 AZURE_CLIENT_ID="${AZURE_CLIENT_ID?Please provide the ID for your Azure service principal.}"
 AZURE_CLIENT_PASSWORD="${AZURE_CLIENT_PASSWORD?Please provide the secret for AZURE_CLIENT_ID.}"

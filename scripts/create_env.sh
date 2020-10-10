@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-TOPLEVEL=$(git rev-parse --show-toplevel)
-ENV_FILE="$TOPLEVEL/.env"
+ENV_FILE="$PWD/.env"
 EXAMPLE_ENV_FILE="${ENV_FILE}.example"
 
 env_file_exists() {

@@ -39,11 +39,11 @@ You can get started with this script in two easy steps:
 You'll need an environment file, or dotenv, to use this script. Creating it is easy. Simply run:
 
 ```sh
-$: ./scripts/create_env.sh
+$: ./scripts/terraform.sh --create-env
 ```
 
-This will produce a `.env` file at the root of your repository. Open it in your favorite editor
-and replace anything that says "change me".
+This will produce a `.env` file at the root of your repository and show you its contents.
+Open it in your favorite editor and replace anything that says "change me".
 
 ### Running in Docker?
 
